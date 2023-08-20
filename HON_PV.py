@@ -71,8 +71,8 @@ def hon():
         print("N/A")
     else:
         while True: 
-            pv_name = input("Enter the name of the process vent: ")
-            if pv_name == "":
+            pv_name = input("Enter the name of the process vent: ").strip()
+            if pv_name in ["", " "]:
                 continue
             else:
                 break
