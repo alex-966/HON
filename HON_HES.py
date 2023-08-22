@@ -143,17 +143,6 @@ def he_name():
         else:
             break
     return he_name
-
-def he_type():
-    
-    while True:
-        he_type = input("Enter the type of exchanger \
-- recirculating or once-through? ").lower().strip()
-        if he_type not in ("recirculating", "cooling tower", "cooling water tower", 
-                                        "once-through", "once through"):
-            continue
-        else:
-            break 
         
 def eo(i):
 
@@ -189,15 +178,25 @@ def monitoring():
         try:
             solubility = float(input("Enter the composition of total water soluble \
 organics that could leak into the exchanger (wt%): ").strip())
-            henry = float(input("Enter the Henry's Law Constant (at 25 degrees C) \
-of the water soluble organics that could leak into the exchanger \
-(atmospheres-cubic meters/mol): ").strip())
 
         except ValueError:
             continue
         
         else:
             break
+    
+    while True: 
+        try:
+            henry = float(input("Enter the Henry's Law Constant (at 25 degrees C) \
+of the water soluble organics that could leak into the exchanger \
+(atmospheres-cubic meters/mol): ").strip())
+
+        except ValueError:
+            continue
+            
+        else:
+            break
+            
     water_method = water_sampling(solubility, henry)
     
     if water_method:
@@ -207,4 +206,4 @@ of the water soluble organics that could leak into the exchanger \
     
     return sampling_method
 
-main()    
+main()
