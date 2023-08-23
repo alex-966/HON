@@ -32,6 +32,7 @@ the cooling water. (Y/N): ").lower().strip()
         
         if exemptions in ("yes", "y"):
             print("N/A")
+            
         else:
             while True:
                 he_type = input("Enter the type of exchanger \
@@ -55,17 +56,24 @@ the exchanger (gpm): ").strip())
                             
                 if flow_exemption:
                     print("N/A")
+                    
                 else:
-                    hon_disp = {"Name": he_name(), "Type": he_type.title(), "EO Determination": eo_service, 
+                    hon_disp = {
+                                "Name": he_name(), 
+                                "Type": he_type.title(), 
+                                "EO Determination": eo_service, 
                                 "Sampling Method": monitoring()
-                            }
+                                }
                     for rtr in hon_disp:
                         print(rtr, hon_disp[rtr], sep=": ")
             
             else:
-                hon_disp = {"Name": he_name(), "Type": he_type.title(), "EO Determination": eo_service, 
+                hon_disp = {
+                            "Name": he_name(), 
+                            "Type": he_type.title(), 
+                            "EO Determination": eo_service, 
                             "Sampling Method": monitoring()
-                        }
+                            }
                 for rtr in hon_disp:
                     print(rtr, hon_disp[rtr], sep=": ")
     
@@ -83,6 +91,7 @@ the cooling water. (Y/N): ").lower().strip()
         
         if exemptions in ("yes", "y"):
             print("N/A")
+        
         else:
             while True:
                 try:
@@ -95,7 +104,6 @@ process side of the exchanger (wt%): ").strip())
             ohap_service = ohap(ohap_comp)
                 
             if ohap_service:
-                        
                 while True:
                     he_type = input("Enter the type of exchanger \
 - recirculating or once-through? ").lower().strip()
@@ -118,16 +126,24 @@ the exchanger (gpm): ").strip())
                             
                     if flow_exemption:
                         return print("N/A")
+                    
                     else:
-                        hon_disp = {"Name": he_name(), "Type": he_type.title(), "EO Determination": eo_service, 
+                        hon_disp = {
+                                    "Name": he_name(), 
+                                    "Type": he_type.title(), 
+                                    "EO Determination": eo_service, 
                                     "Sampling Method": monitoring()
-                                }
+                                    }
                         for rtr in hon_disp:
                             print(rtr, hon_disp[rtr], sep=": ")
+                
                 else:
-                    hon_disp = {"Name": he_name(), "Type": he_type.title(), "EO Determination": eo_service, 
+                    hon_disp = {
+                                "Name": he_name(), 
+                                "Type": he_type.title(), 
+                                "EO Determination": eo_service, 
                                 "Sampling Method": monitoring()
-                            }
+                                }
                     for rtr in hon_disp:
                         print(rtr, hon_disp[rtr], sep=": ")
                         
@@ -142,6 +158,7 @@ def he_name():
             continue
         else:
             break
+    
     return he_name
         
 def eo(i):
@@ -178,10 +195,8 @@ def monitoring():
         try:
             solubility = float(input("Enter the composition of total water soluble \
 organics that could leak into the exchanger (wt%): ").strip())
-
         except ValueError:
             continue
-        
         else:
             break
     
@@ -190,10 +205,8 @@ organics that could leak into the exchanger (wt%): ").strip())
             henry = float(input("Enter the Henry's Law Constant (at 25 degrees C) \
 of the water soluble organics that could leak into the exchanger \
 (atmospheres-cubic meters/mol): ").strip())
-
         except ValueError:
             continue
-            
         else:
             break
             

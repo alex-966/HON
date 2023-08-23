@@ -31,7 +31,6 @@ determination downstream of where mixing occurs, if selected (L/min): ").strip()
         print("N/A")
     
     else:
-        
         while True:
             try:
                 eo_conc = float(input("Enter the concentration of EO in the wastewater \
@@ -44,11 +43,11 @@ stream (ppmw): ").strip())
         eo_service = eo(eo_conc, ww_flow)
         
         if eo_service:
-    
             eo_det = "In EO Service"
             group_det = "Group 1"
             
-            hon_disp = {"WW Name": ww_name(),
+            hon_disp = {
+                        "WW Name": ww_name(),
                         "WW Type": ww_type.title(), 
                         "Group Determination": group_det, 
                         "EO Determination": eo_det
@@ -57,7 +56,6 @@ stream (ppmw): ").strip())
                 print(rtr, hon_disp[rtr], sep=": ")
         
         else:
-            
             eo_det = "Not in EO Service"
             
             while True:
@@ -82,7 +80,8 @@ Follow maintenance procedure standards in 40 CFR 63.105."
             else:    
                 group_det = "N/A"
             
-            hon_disp = {"WW Name": ww_name(),
+            hon_disp = {
+                        "WW Name": ww_name(),
                         "WW Type": ww_type.title(), 
                         "Group Determination": group_det, 
                         "EO Determination": eo_det

@@ -16,8 +16,10 @@ operation of a CMPU? (Y/N): ").strip().lower()
             continue
         else:
             break
+        
     if pv_applic(applic) == True:
         print("N/A")
+        
     else:
         while True:
             pv_exemptions = input("Is the gas stream any of the following cases \
@@ -69,6 +71,7 @@ def hon():
         
     if eo_service == "Not in EO Service" and ohap_applic == False:
         print("N/A")
+    
     else:
         while True: 
             pv_name = input("Enter the name of the process vent: ").strip()
@@ -86,11 +89,11 @@ def hon():
                 break 
         group_det = ohap(ohap_emissions, ohap_comp)
         
-        hon_disp = {"Name": pv_name, 
+        hon_disp = {
+                    "Name": pv_name, 
                     "Group Determination": group_det, 
                     "EO Determination": eo_service
                     }
-            
         for rtr in hon_disp:
             print(rtr, hon_disp[rtr], sep=": ")
             
