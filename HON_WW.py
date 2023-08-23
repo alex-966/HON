@@ -21,7 +21,7 @@ process wastewater or maintenace wastewater? ").lower().strip()
         try:
             ww_flow = float(input("Enter the flow rate of either (1) the individual \
 wastewater stream at its point of determination or (2) of 2 or more wastewater\
-streams that are combined and have its point of determination downstream where mixing occurs, \
+streams that are combined and have its point of determination downstream of where mixing occurs, \
 if selected (L/min): ").strip())
         except ValueError:
             continue
@@ -36,7 +36,7 @@ if selected (L/min): ").strip())
         while True:
             try:
                 eo_conc = float(input("Enter the concentration of EO in the wastewater \
-stream (ppmv): ").strip())
+stream (ppmw): ").strip())
             except ValueError:
                 continue
             else:
