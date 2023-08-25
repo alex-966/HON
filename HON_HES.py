@@ -9,31 +9,31 @@ Created on Mon Aug 21 07:00:08 2023
 def main():
     
     while True:
-        try:
-            eo_comp = float(input("Enter the composition of EO on the process \
-side of the exchanger (wt%): ").strip())
-        except ValueError:
-            continue
-        else:
-            break
-    eo_service = eo(eo_comp)
-    
-    if eo_service in ("In EO Service"):
-        while True:
-            exemptions = input("Does the exchanger meet any of the following exemptions? \
+        exemptions = input("Does the exchanger meet any of the following exemptions? \
 (1) The minimum pressure on the cooling water side is at least 35 kPa greater than the \
 maximum pressure on the process side. (2) There is an intervening cooling fluid, \
 containing <5 wt% total HAPs listed in table 4 of subpart F, between the process and \
 the cooling water. (Y/N): ").lower().strip()
-            if exemptions not in ("yes", "y", "no", "n"):
+        if exemptions not in ("yes", "y", "no", "n"):
+            continue
+        else:
+            break
+    
+    if exemptions in ("yes", "y"):
+        print("N/A")
+            
+    else:
+        while True:
+            try:
+                eo_comp = float(input("Enter the composition of EO on the process \
+side of the exchanger (wt%): ").strip())
+            except ValueError:
                 continue
             else:
                 break
+        eo_service = eo(eo_comp)
         
-        if exemptions in ("yes", "y"):
-            print("N/A")
-            
-        else:
+        if eo_service in ("In EO Service"):
             while True:
                 he_type = input("Enter the type of exchanger \
 - recirculating or once-through? ").lower().strip()
@@ -76,21 +76,6 @@ the exchanger (gpm): ").strip())
                             }
                 for rtr in hon_disp:
                     print(rtr, hon_disp[rtr], sep=": ")
-    
-    else:
-        while True:
-            exemptions = input("Does the exchanger meet any of the following exemptions? \
-(1) The minimum pressure on the cooling water side is at least 35 kPa greater than the \
-maximum pressure on the process side. (2) There is an intervening cooling fluid, \
-containing <5 wt% total HAPs listed in table 4 of subpart F, between the process and \
-the cooling water. (Y/N): ").lower().strip()
-            if exemptions not in ("yes", "y", "no", "n"):
-                continue
-            else:
-                break
-        
-        if exemptions in ("yes", "y"):
-            print("N/A")
         
         else:
             while True:
@@ -104,6 +89,7 @@ process side of the exchanger (wt%): ").strip())
             ohap_service = ohap(ohap_comp)
                 
             if ohap_service:
+                
                 while True:
                     he_type = input("Enter the type of exchanger \
 - recirculating or once-through? ").lower().strip()
