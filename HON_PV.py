@@ -11,7 +11,7 @@ def main():
     while True:
         applic = input("Does the vent gas stream originate as a continuous flow from \
 an air oxidation reactor, distillation unit, or reactor during \
-operation of a CMPU? (Y/N): ").strip().lower()    
+operation of a chemical manufacturing process unit [40 CFR 63.107(b)]? (Y/N): ").strip().lower()    
         if applic not in ("yes", "y", "no", "n"):
             continue
         else:
@@ -26,15 +26,15 @@ operation of a CMPU? (Y/N): ").strip().lower()
 for this process vent? \
 (1) A relief valve discharge. \
 (2) A leak from equipment subject to 40 CFR 63 Subpart H. \
-(3) A gas stream going to a fuel gas system as defined in 63.101. \
-(4) A gas stream exiting a control device used to comply with 63.113. \
+(3) A gas stream going to a fuel gas system as defined in §63.101. \
+(4) A gas stream exiting a control device used to comply with §63.113. \
 (5) A gas stream transferred to other processes (on-site or off-site) \
 for reaction or other use in another process (i.e., chemical value as a product, \
 isolated intermediate, byproduct, or coproduct, or for heat value). \
 (6) A gas stream transferred for fuel value (i.e., net positive heating value), \
 use, reuse, or for sale for fuel value, use, or reuse. \
-(7) A storage vessel vent or transfer operation vent subject to 63.119 or 63.126. \
-(8) A vent from a WMU subject to 63.132 through 63.137. \
+(7) A storage vessel vent or transfer operation vent subject to §63.119 or §63.126. \
+(8) A vent from a WMU subject to §63.132 through §63.137. \
 (9) A gas stream exiting an analyzer. (Y/N): ").strip().lower()
             if pv_exemptions not in ("yes", "y", "no", "n"):
                 continue
@@ -75,7 +75,7 @@ def hon():
     else:
         while True: 
             pv_name = input("Enter the name of the process vent: ").strip()
-            if pv_name in ["", " "]:
+            if not pv_name:
                 continue
             else:
                 break
@@ -127,4 +127,5 @@ def ohap(n, k):
     else:
         return "Group 2"
 
-main()
+if __name__ == "__main__":
+    main()

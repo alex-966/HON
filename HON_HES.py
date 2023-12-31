@@ -9,7 +9,7 @@ Created on Mon Aug 21 07:00:08 2023
 def main():
     
     while True:
-        exemptions = input("Does the exchanger meet any of the following exemptions? \
+        exemptions = input("Does the exchanger meet any of the following exemptions [40 CFR 63.104(a)]? \
 (1) The minimum pressure on the cooling water side is at least 35 kPa greater than the \
 maximum pressure on the process side. (2) There is an intervening cooling fluid, \
 containing <5 wt% total HAPs listed in table 4 of subpart F, between the process and \
@@ -140,7 +140,7 @@ def he_name():
     
     while True: 
         he_name = input("Enter the name of the exchanger: ").strip()
-        if he_name in ("", " "):
+        if not he_name:
             continue
         else:
             break
@@ -199,10 +199,11 @@ of the water soluble organics that could leak into the exchanger \
     water_method = water_sampling(solubility, henry)
     
     if water_method:
-        sampling_method = "Sampling Methods in accordance with Part 136"
+        sampling_method = "Sampling Methods in accordance with 40 CFR Part 136"
     else:
         sampling_method = "Modified El Paso"
     
     return sampling_method
 
-main()
+if __name__ == "__main__":
+    main()
